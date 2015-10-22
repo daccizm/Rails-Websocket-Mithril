@@ -9,14 +9,16 @@ class RailsChat.Components.Chat
 
 class RailsChat.Components.ChatIndex
   view: (ctrl, args) ->
-    m "div", args.vm.list().map (data)->
-      [
-        m.component(new RailsChat.Components.ChatShow(), {message: data.message()})
-      ]
+    m "div",
+      m "ul", args.vm.list().map (data)->
+        [
+          m.component(new RailsChat.Components.ChatShow(), {message: data.message()})
+        ]
 
 class RailsChat.Components.ChatShow
   view: (ctrl, args) ->
-    m "div", args.message
+    m "li",
+      m ".balloon-message", args.message
 
 class RailsChat.Components.ChatForm
   controller: (data) ->
