@@ -17,8 +17,9 @@ class RailsChat.Components.ChatIndex
 
 class RailsChat.Components.ChatShow
   view: (ctrl, args) ->
-    m "li",
-      m ".balloon-message", args.message
+    m "li", {style: "list-style:none;"},
+      m ".balloon-message",
+        m "div", m.trust(marked(args.message))
 
 class RailsChat.Components.ChatForm
   controller: (data) ->
@@ -26,7 +27,7 @@ class RailsChat.Components.ChatForm
   view: (ctrl, args) ->
     m "div", [
       m "div", args.vm.list().length
-      m "input",
+      m "textarea",
         onchange: m.withAttr("value", ctrl.newComment.message)
         value: ctrl.newComment.message()
       m "a", {

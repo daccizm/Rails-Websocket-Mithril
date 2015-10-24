@@ -10,8 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require marked.min
 //= require underscore
-//= require mithril.min.js
+//= require mithril.min
 //= require ./initializers
 //= require ./api
 //= require_tree .
