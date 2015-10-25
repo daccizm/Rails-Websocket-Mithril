@@ -32,6 +32,7 @@ class RailsChat.Components.ChatForm
     m "div", [
       m "textarea.form-control",
         onkeydown: m.withAttr("value", args.vm.newComment.message)
+        onchange: m.withAttr("value", args.vm.newComment.message)
         value: args.vm.newComment.message()
       m "a.btn.btn-lg.btn-empty", {
           href: "javascript:void(0)"
