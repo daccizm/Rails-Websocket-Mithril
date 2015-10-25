@@ -4,6 +4,7 @@ class RailsChat.Components.Chat
   view: (ctrl) ->
     [
       m.component(new RailsChat.Components.ChatIndex(), {vm: ctrl.vm})
+      m.component(new RailsChat.Components.ChatShow(), {message: ctrl.vm.newComment.message() || "Please write here ..."})
       m.component(new RailsChat.Components.ChatForm(), {vm: ctrl.vm})
     ]
 
@@ -22,19 +23,15 @@ class RailsChat.Components.ChatShow
         m "div", m.trust(marked(args.message))
 
 class RailsChat.Components.ChatForm
-  controller: (data) ->
-    newComment: new RailsChat.Models.Chat()
   view: (ctrl, args) ->
     m "div", [
       m "textarea",
-        onkeydown: m.withAttr("value", ctrl.newComment.message)
-        value: ctrl.newComment.message()
+        onkeydown: m.withAttr("value", args.vm.newComment.message)
+        value: args.vm.newComment.message()
       m "a", {
           href: "javascript:void(0)"
           onclick: ->
-            ctrl.newComment.save()
+            args.vm.newComment.save()
         },
         "コメント"
-      m ".balloon-message",
-        m "div", m.trust(marked(ctrl.newComment.message() || "<p>Please write here ...</p>"))
     ]

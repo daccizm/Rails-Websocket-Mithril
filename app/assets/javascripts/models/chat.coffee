@@ -16,6 +16,7 @@ class RailsChat.Models.Chat
 RailsChat.ViewModels.Chat =
   init: ->
     vm = {}
+    vm.newComment = new RailsChat.Models.Chat()
     vm.list = RailsChat.Models.Chat.list().then (list) ->
       list
     vm.ws = new WebSocket("ws://localhost:3001")
