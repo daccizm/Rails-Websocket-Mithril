@@ -1,3 +1,5 @@
+@import "skyblue.min";
+
 .balloon-message {
     position: relative;
     display: inline-block;
@@ -39,6 +41,14 @@
       	    -ms-transform: rotate(-30deg);
       	     -o-transform: rotate(-30deg);
       	        transform: rotate(-30deg);
+    }
+
+    table {
+      @extend .table;
+      @extend .table-striped;
+      @extend .table-bordered;
+      margin-top: 10px;
+      color: #000;
     }
 
     &.preview {
