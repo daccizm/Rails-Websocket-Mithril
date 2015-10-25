@@ -11,7 +11,7 @@ class RailsChat.Components.Chat
 class RailsChat.Components.ChatIndex
   view: (ctrl, args) ->
     m "div",
-      m "ul", args.vm.list().map (data)->
+      m "ul", {style: "padding-left: 0;"}, args.vm.list().map (data)->
         [
           m.component(new RailsChat.Components.ChatShow(), {message: data.message()})
         ]
@@ -30,10 +30,10 @@ class RailsChat.Components.ChatPreview
 class RailsChat.Components.ChatForm
   view: (ctrl, args) ->
     m "div", [
-      m "textarea",
+      m "textarea.form-control",
         onkeydown: m.withAttr("value", args.vm.newComment.message)
         value: args.vm.newComment.message()
-      m "a", {
+      m "a.btn.btn-lg.btn-empty", {
           href: "javascript:void(0)"
           onclick: ->
             args.vm.newComment.save()
