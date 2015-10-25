@@ -26,9 +26,8 @@ class RailsChat.Components.ChatForm
     newComment: new RailsChat.Models.Chat()
   view: (ctrl, args) ->
     m "div", [
-      m "div", args.vm.list().length
       m "textarea",
-        onchange: m.withAttr("value", ctrl.newComment.message)
+        onkeydown: m.withAttr("value", ctrl.newComment.message)
         value: ctrl.newComment.message()
       m "a", {
           href: "javascript:void(0)"
@@ -36,4 +35,6 @@ class RailsChat.Components.ChatForm
             ctrl.newComment.save()
         },
         "コメント"
+      m ".balloon-message",
+        m "div", m.trust(marked(ctrl.newComment.message() || "<p>Please write here ...</p>"))
     ]
