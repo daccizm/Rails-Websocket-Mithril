@@ -40,4 +40,12 @@
       	     -o-transform: rotate(-30deg);
       	        transform: rotate(-30deg);
     }
+
+    &.preview {
+      color: #19283C;
+      background: #ccc;
+      &:before {
+        background: #ccc;
+      }
+    }
 }

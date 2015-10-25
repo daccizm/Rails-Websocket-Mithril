@@ -4,7 +4,7 @@ class RailsChat.Components.Chat
   view: (ctrl) ->
     [
       m.component(new RailsChat.Components.ChatIndex(), {vm: ctrl.vm})
-      m.component(new RailsChat.Components.ChatShow(), {message: ctrl.vm.newComment.message() || "Please write here ..."})
+      m.component(new RailsChat.Components.ChatPreview(), {vm: ctrl.vm})
       m.component(new RailsChat.Components.ChatForm(), {vm: ctrl.vm})
     ]
 
@@ -21,6 +21,11 @@ class RailsChat.Components.ChatShow
     m "li", {style: "list-style:none;"},
       m ".balloon-message",
         m "div", m.trust(marked(args.message))
+
+class RailsChat.Components.ChatPreview
+  view: (ctrl, args) ->
+    m ".balloon-message .preview",
+      m "div", m.trust(marked(args.vm.newComment.message() || "Please write here ..."))
 
 class RailsChat.Components.ChatForm
   view: (ctrl, args) ->
