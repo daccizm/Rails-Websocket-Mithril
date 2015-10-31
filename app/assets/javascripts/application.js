@@ -15,4 +15,5 @@
 //= require mithril.min
 //= require ./initializers
 //= require ./api
+//= require ./emoji_helper
 //= require_tree .

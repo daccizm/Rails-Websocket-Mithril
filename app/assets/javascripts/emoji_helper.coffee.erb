@@ -1,0 +1,18 @@
+<%
+imgs = {}
+Emoji.all.each do |emoji|
+  imgs[emoji.name] = image_path("emoji/#{emoji.image_filename}")
+end
+%>
+
+class window.Emoji
+  @parsed: (content) ->
+    return if _.isEmpty(content) || content == ""
+    content.replace /:([\w+-]+):/g, (match) ->
+      path = Emoji.path(match.replace(/:/g, ""))
+      if _.isEmpty(path) || path == ""
+        match
+      else
+        "<img alt='#$1' src='#{path}' style='vertical-align:middle' width='20' height='20' />"
+  @path: (name) ->
+    <%= imgs.to_json %>[name]

@@ -20,12 +20,12 @@ class RailsChat.Components.ChatShow
   view: (ctrl, args) ->
     m "li", {style: "list-style:none;"},
       m ".balloon-message",
-        m "div", m.trust(marked(args.message))
+        m "div", m.trust(Emoji.parsed(marked(args.message)))
 
 class RailsChat.Components.ChatPreview
   view: (ctrl, args) ->
     m ".balloon-message .preview",
-      m "div", m.trust(marked(args.vm.newComment.message() || "Please write here ..."))
+      m "div", m.trust(Emoji.parsed(marked(args.vm.newComment.message() || "Please write here ...")))
 
 class RailsChat.Components.ChatForm
   view: (ctrl, args) ->
